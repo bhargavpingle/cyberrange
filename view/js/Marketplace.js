@@ -100,12 +100,12 @@ function displayItemsOfType(type) {
             ' + items[i].img + ' \
           </div> \
           \
-          <div class="col-md-6"> \
+          <div class="col-md-5"> \
               <h5 class="mt-0 text-info">' + items[i].name + '</h5> \
           ' + items[i].getDescription()+ ' \
           </div> \
              \
-          <div class="col-md-2 "> \
+          <div class="col-md-3 "> \
             <b>PRICE</b> \
             <h4 class="text-secondary">' + formatCurrency(parseFloat(items[i].price)) + '</h4> \
             <button type="button" onclick="javascript:addToInventory(this);" class="btn btn-warning btn-sm" id="button' + i + '"><i class="fas fa-cart-plus"></i> Buy</button> \
@@ -119,4 +119,5 @@ window.onload = function() {
   document.getElementById("fundlabel").innerHTML=formatCurrency(funds);
   //Create the divs in the marketplace from the "items" array
   displayItemsOfType("Computer");
+  
 }
