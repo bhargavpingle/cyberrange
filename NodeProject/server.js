@@ -9,17 +9,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+// app.get('/',function(req,res){
+//     res.sendFile(path.join(__dirname+'/view/html/index.html'));
+//     // since I used app.use() It will find and locate index.html in view folder
+// });
+
+// app.get('/technology',function(req,res){
+//     res.sendFile(path.join(__dirname+'/view/html/cyberrange.html'));
+// });
+
+// app.get('/marketplace',function(req,res){
+//     res.sendFile(path.join(__dirname+'/view/html/mp.html'));
+// });
+
+// default route
 app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/view/html/index.html'));
-    // since I used app.use() It will find and locate index.html in view folder
-});
-
-app.get('/technology',function(req,res){
-    res.sendFile(path.join(__dirname+'/view/html/cyberrange.html'));
-});
-
-app.get('/marketplace',function(req,res){
-    res.sendFile(path.join(__dirname+'/view/html/mp.html'));
+    res.send({message: 'NodeJS'});
 });
 
 app.post('/purchase', function(req, res){
@@ -29,7 +34,7 @@ app.post('/purchase', function(req, res){
 
     var sql_query = 'select risk_level from asset_lookup where asset_type = ? and exploit = ?';
 
-    db_connection.query(sql_query,[req.body.value.type,'DOS'], function(err,response){
+    db_connection.query(sql_query,[req.body.value.type,'DOS'], function(err,response) {
         if (err) throw err;
         console.log('**** Filter Response:');
         console.log(response[0].risk_level);
