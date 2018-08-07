@@ -8,7 +8,7 @@ window.onload = function() {
       data: {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
-              label: "Age of Computer",
+              label: "Experience ",
               backgroundColor: ['green', 'orange', 'red'],
               borderColor: ['green', 'orange', 'red'],
               data: [2, 20, 5],
@@ -32,7 +32,7 @@ window.onload = function() {
       data: {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
-              label: "Age of Server",
+              label: "Experience ",
               backgroundColor: ['green', 'orange', 'red'],
               borderColor: ['green', 'orange', 'red'],
               data: [4, 5, 1],
@@ -57,7 +57,7 @@ window.onload = function() {
       data: {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
-              label: "Age of Network Device",
+              label: "Experience ",
               backgroundColor: ['green', 'orange', 'red'],
               borderColor: ['green', 'orange', 'red'],
               data: [1, 2, 5],
@@ -81,7 +81,7 @@ window.onload = function() {
       data: {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
-              label: "Age of Printer",
+              label: "Experience ",
               backgroundColor: ['green', 'orange', 'red'],
               borderColor: ['green', 'orange', 'red'],
               data: [1, 1, 0],
@@ -105,7 +105,7 @@ window.onload = function() {
       data: {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
-              label: "Age of Device",
+              label: "Experience ",
               backgroundColor: ['green', 'orange', 'red'],
               borderColor: ['green', 'orange', 'red'],
               data: [0, 3, 2],
