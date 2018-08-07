@@ -1,6 +1,12 @@
 var ctx = document.getElementById('currentRisk').getContext('2d');
 var ctx2 = document.getElementById('riskTolerance').getContext('2d');
 
+var currentRisk = document.getElementById('cRisk');
+var riskTolerance = document.getElementById('riskTl');
+
+currentRisk.innerHTML="10%";
+riskTolerance.innerHTML="20%";
+
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'doughnut',
