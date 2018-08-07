@@ -1,0 +1,40 @@
+.navbar {
+  background-color: blue;
+}
+ul {
+  width: 100%;
+}
+.nav-link, .navbar-text {
+  color: yellow;
+  text-align: center;
+}
+.nav-link:hover {
+  color: orange;
+}
+#first {
+  margin-left: 26%;
+}
+nav li {
+  margin-right: 1.1%;
+}
+#graphs {
+  height: 300px;
+}
+.attention {
+  font-family: "Lucida handwriting", cursive, fantasy;
+  text-decoration: none;
+}
+.attention:hover {
+  text-decoration: none;
+}
+.graphHolder {
+  background-color: red;
+  box-shadow: 5px 10px #888888  ;
+  padding: 0;
+}
+.sugrow {
+  align-items: center;
+}
+.suggestions {
+  text-align: center;
+}
