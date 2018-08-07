@@ -1,12 +1,13 @@
 var funds = 16471.91; //Set initial funds variable here.
-var inventory = [];   //"inventory" stores the items currently in the user's inventory,
-                      //this should be populated by information in the database
-                      //and added to when items are purchased from the marketplace
+                      //"inventory", defined below stores the items currently 
+                      //in the user's inventory, this should be populated by 
+                      //information in the database and added to when items are 
+                      //purchased from the marketplace
                       // "items", defined below, stores all items available in the store
 
 class shopItem {
 
-  constructor(name, processor, mem, storage, price, type, img) {
+  constructor(name, processor, mem, storage, price, type, img, risk) {
     this.name=name;
     this.processor=processor;
     this.mem = mem;
@@ -14,6 +15,7 @@ class shopItem {
     this.price=price;
     this.type=type;
     this.img=img;
+    this.risk=risk;
     /*if (this.type=="Computer") {
       this.img = '<i class="fas fa-shop fa-desktop"></i>'
     }
@@ -25,6 +27,23 @@ class shopItem {
     return ('<p>' + this.processor + '<br> ' + this.mem + '<br> ' + this.storage + '</p>');
   }
 }
+class usersItems {
+  constructor(){
+    this.inventory = [];
+  }
+getUserRisk() {
+    //total up risk levels for each item in users inventory
+    var risk = 0;
+    for(var i = 0; i < inventory.length; i++) {
+      risk += inventory[i].risk;
+    }
+  }
+ push(item) {this.inventory.push(item);}
+ remove(index) {
+    this.inventory.splice(index, 1);
+  }
+}
+var inventory = new usersItems();
 //Shop item objects, store in "items" to display in store front
 var computer1 = new shopItem('Lenovo -330-15IKB 15.6" Laptop',
 'Core i3', '8GB Memory', '1TB Hard Drive', 500.99, "Computer", '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">');
@@ -119,5 +138,5 @@ window.onload = function() {
   document.getElementById("fundlabel").innerHTML=formatCurrency(funds);
   //Create the divs in the marketplace from the "items" array
   displayItemsOfType("Computer");
-  
+
 }
