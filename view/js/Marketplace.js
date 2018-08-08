@@ -1,7 +1,7 @@
 var funds = 16471.91; //Set initial funds variable here.
-                      //"inventory", defined below stores the items currently 
-                      //in the user's inventory, this should be populated by 
-                      //information in the database and added to when items are 
+                      //"inventory", defined below stores the items currently
+                      //in the user's inventory, this should be populated by
+                      //information in the database and added to when items are
                       //purchased from the marketplace
                       // "items", defined below, stores all items available in the store
 
@@ -37,6 +37,7 @@ getUserRisk() {
     for(var i = 0; i < inventory.length; i++) {
       risk += inventory[i].risk;
     }
+    return risk;
   }
  push(item) {this.inventory.push(item);}
  remove(index) {
@@ -57,7 +58,9 @@ var server2 = new shopItem('HP Proliant DL360p Gen8 Server',
   '2x Intel Xeon Processors','128 GB RAM', '600GB Storage', 1852, "Server", '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">');
 var server3 = new shopItem('Refurbished: HP ProLiant DL385 G6 Server',
     '2x Opteron Processors','128 GB DDR2', 'No HDD', 312.99, "Server", '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">');
-var items = [computer1, computer2, computer3, server1, server2, server3];
+var router1 = new shopItem('Cisco 1921-SEC/K9',
+        '','512 MB DDR2', '256 MB Flash Memory', 1695, "Network", '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">');
+var items = [computer1, computer2, computer3, server1, server2, server3, router1];
 
 function formatCurrency(funds) {
   //convert a decimal number to currency format, e.g, 13.4 --> $13.40
