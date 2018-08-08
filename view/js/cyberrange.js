@@ -9,8 +9,8 @@ window.onload = function() {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
               label: "Age of Computer",
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
+              backgroundColor: ['#28A745','#17A2B8','#6C757D'],
+            //   borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
               data: [2, 20, 5],
           }]
       },
@@ -33,8 +33,8 @@ window.onload = function() {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
               label: "Age of Server",
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
+              backgroundColor: ['#17A2B8','#6C757D','#007BFF'],
+            //   borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
               data: [4, 5, 1],
           }]
       },
@@ -57,8 +57,8 @@ window.onload = function() {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
               label: "Age of Network Device",
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
+              backgroundColor: ['#17A2B8','#6C757D','#007BFF'],
+            //   borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
               data: [1, 2, 5],
           }]
       },
@@ -81,8 +81,8 @@ window.onload = function() {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
               label: "Age of Printer",
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
+              backgroundColor: ['#17A2B8','#6C757D','#007BFF'],
+            //   borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
               data: [1, 1, 0],
           }]
       },
@@ -105,8 +105,8 @@ window.onload = function() {
           labels: ["0-2 Years", "2-5 Years", "5+ Years"],
           datasets: [{
               label: "Age of Device",
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
-              borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
+              backgroundColor: ['#17A2B8','#6C757D','#007BFF'],
+            //   borderColor: ['rgb(255, 99, 132)', 'rgb(69, 136, 255)', 'rgb(92, 184, 92)'],
               data: [0, 3, 2],
           }]
       },
