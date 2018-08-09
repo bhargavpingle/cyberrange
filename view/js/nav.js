@@ -23,6 +23,9 @@ nbar.innerHTML=(
 						<li class="nav-item"> \
 								<a class="nav-link text-white" href="#">Process</a> \
 						</li>					\
+            <li class="nav-item"> \
+							<a class="nav-link text-white" href="risk.html">Risk Landscape</a> \
+						</li> \
 					</ul> \
 					<div class="nav-item dropdown "> \
 							<button class="nav-link dropdown-toggle btn btn-outline-success"  id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"> \
