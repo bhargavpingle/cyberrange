@@ -12,10 +12,10 @@ nbar.innerHTML=(
 				<div class="collapse navbar-collapse" id="navbarSupportedContent"> \
 					<ul class="navbar-nav mr-auto"> \
 						<li class="nav-item active"> \
-							<a class="nav-link text-white" href="#">Technology</a> \
+							<a class="nav-link text-white" href="cyberrange.html">Technology</a> \
 						</li> \
 						<li class="nav-item"> \
-							<a class="nav-link text-white" href="#">People</a> \
+							<a class="nav-link text-white" href="People.html">People</a> \
 						</li> \
 						<li class="nav-item"> \
 							<a class="nav-link text-white" href="#">Policy</a> \
@@ -32,15 +32,17 @@ nbar.innerHTML=(
 								<div class="dropdown-divider"></div> \
 								<a class="dropdown-item" href="#"><i class="fas fa-sliders-h"></i> Setting</a> \
 								<div class="dropdown-divider"></div> \
-								<a class="dropdown-item" href="#"><i class="fas fa-shopping-basket"></i> Market Place</a> \
+								<a class="dropdown-item" href="mp.html"><i class="fas fa-shopping-basket"></i> Market Place</a> \
 								<div class="dropdown-divider"></div> \
 								<a class="dropdown-item" href="#"><i class="far fa-star"></i> Scores</a> \
 							</div> \
 					</div> \
-
+					<!-- <form class="form-inline my-2 my-lg-0"> \
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> \
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> \
+					</form> --> \
 				</div> \
 		   \
   ');
 anchor = document.body.firstChild;
 document.body.insertBefore(nbar, anchor);
-
