@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Marketplace.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+    <title>Marketplace</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../js/Marketplace.js"></script>
+    <script src="../js/nav.js"></script>
+
+    <!-- page Title -->
+    <h1 class="display-3 text-center text-primary shadow-sm p-3 mb-5 bg-light rounded">[ Marketplace ]</h1>
+
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <!-- Categories -->
+        <div class="col-sm-2 border-right p-3 ">
+          <h4 class="text-center">Categories</h4>
+
+          <!-- category-items -->
+          <a class="cat" href="#" onclick='javascript:displayItemsOfType("Computer")'><div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-laptop fa-3x"></i><h5 class="text-muted pt-1">Computers</h5></div></a>
+          <a class="cat" href="#" onclick='javascript:displayItemsOfType("Server")'><div class="content-box border border-secondary p-3 mb-2 text-center text-secondary rounded"><i class="fas fa-server fa-3x"></i><h5 class="text-muted pt-1" >Servers</h5></div></a>
+          <a class="cat" href="#" onclick='javascript:displayItemsOfType("Network")'><div class="content-box border border-info p-3 mb-2 text-center text-info rounded"><i class="fas fa-share-alt fa-3x"></i><h5 class="text-muted pt-1" >Network</h5></div></a>
+          <a class="cat" href="#" onclick='javascript:displayItemsOfType("Special")'><div class="content-box border border-dark p-3 mb-2 text-center text-dark rounded"><i class="fas fa-fingerprint fa-3x"></i><h5 class="text-muted pt-1" >Sp. Devices</h5></div></a>
+          <a class="cat" href="#" onclick='javascript:displayItemsOfType("People")'><div class="content-box border border-success p-3 mb-2 text-center text-success rounded"><i class="fas fa-users fa-3x"></i><h5 class="text-muted pt-1">People</h5></div></a>
+
+          <h6 id="fundlabel disabled"><span id="funds"></span></h6>
+        </div>
+
+
+        <!-- placeholder -->
+        <div class="col-sm-1"></div>
+
+        <!-- Shop Items -->
+        <div class="col-sm-6 p-3" id="storeFront">
+            <h4 class="text-center">Items</h4>
+                    </div>
+
+        <!-- placeholder -->
+        <div class="col-sm-1 border-right"></div>
+
+        <!-- Inventory List -->
+        <div class="col-sm-2 inventory">
+
+          <!-- available-funds -->
+          <h6 class="text-muted">Available Funds</h6>
+          <h1 class="display-6 text-success border-bottom pb-5"id="fundlabel"><i class="fas fa-dollar-sign"></i></h1>
+
+          <h6 class="text-muted pt-2">Current Inventory</h6>
+          <div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-laptop"></i><h5 >Computers</h5></div>
+          <div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-server"></i><h5 >Servers</h5></div>
+          <div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-share-alt"></i><h5 >Network</h5></div>
+          <div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-print"></i><h5 >Printers</h5></div>
+          <div class="content-box border border-primary p-3 mb-2 text-center text-primary rounded"><i class="fas fa-fingerprint"></i><h5 >Sp. Devices</h5></div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <h6 class="text-center text-white-50 bg-secondary py-3 mb-0">&copy;2018 R1Studio; Simulation and Gaming Studio</h6>
+    
+  </body>
+</html>

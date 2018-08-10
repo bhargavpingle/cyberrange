@@ -1,0 +1,42 @@
+.inventory {
+  height: 400px;
+  margin-top: 0;
+}
+ul {
+  list-style-type: none;
+  border: 1px solid black;
+}
+li a, li a:hover{
+  text-decoration: none;
+}
+.top-list {
+  border-bottom: 1px solid black;
+}
+.imgHolder {
+  height: 90px;
+  width: 90px;
+  margin: 5px;
+  float: left;
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shop-item {
+  border: 1px solid black;
+}
+.price {
+  width: 150px;
+  height: 100px;
+  border-left: solid 1px black;
+  float: right;
+}
+#fundlabel {
+  color: green;
+}
+.fa-shop {
+  font-size: 55px;
+}
+button {
+  bottom: 5px;
+}
