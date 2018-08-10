@@ -12,11 +12,6 @@ var connection_object = mysql.createConnection({
 connection_object.connect(function(err){
     if(err) throw err;
     console.log('Connection Successful!');
-
-    connection_object.query("select * from asset_lookup", function(err,result,fields){
-        if(err) throw err;
-        console.log(result);
-    });
 });
 
 module.exports = connection_object;
