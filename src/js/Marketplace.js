@@ -19,30 +19,20 @@ class shopItem {
       img: object.img,
       risk: object.risk
   }
-    /*if (this.type=="Computer") {
-      this.img = '<i class="fas fa-shop fa-desktop"></i>'
-    }
-    else if (this.type=="Laptop") {
-      this.img = '<i class="fas fa-shop fa-laptop"></i>'
-    }*/
   }
   getDescription() {
     return ('<p>' + this.properties.processor + '<br> ' + this.properties.mem + '<br> ' + this.properties.storage + '</p>');
   }
-
 }
 class usersItems {
   constructor(){
-   // var result = getRiskLevel();
-    //console.log(result);
     this.inventory = [];
-    
+    this.workforce=[];
   }
 getUserRisk() {
     //total up risk levels for each item in users inventory
     var risk = 0;
     for(var i = 0; i < inventory.length; i++) {
-
       risk += inventory[i].risk;
     }
     return risk;
@@ -76,12 +66,18 @@ function formatCurrency(funds) {
   var dols = fund.substring(0, fund.length-3);
   var formattedfunds="$";
   var p = 0;
+  var neg;
+  if (fund.includes("-")) {
+    neg = true;
+    fund = fund.substring(1, fund.length);
+  }
   for (var i = 0; i < fund.length; i++) {
     if (((fund.length-i) % 3) == 0) {
       if (i != 0) {formattedfunds = formattedfunds + fund.substring(p, i) + ",";}
       p=i;
     }
   }formattedfunds = formattedfunds.slice(0, -1) + "." + String(funds.toFixed(2)).slice(-2);
+  if (neg) {formattedfunds = formattedfunds.substring(0,1) + "-" + formattedfunds.substring(1,formattedfunds.length)}
   return formattedfunds;
 }
 // function for retrieving risk levels
@@ -92,26 +88,22 @@ function getRiskLevel(){
    if (xhr.readyState === 4) {
      var risk_result=xhr.response;
      var json_result = JSON.parse(risk_result);
-     //alert("Purchase Successful!");
-     //return json_result;
      for(var i = 0; i < json_result.length; i++) {
         inventory.push(new shopItem({
         type: json_result[i].assetType,
         risk: json_result[i].risk_level
       }))
-    }     
+    }
    }
  }
  xhr.send();
 }
-
+//instantiate instance of usersItems and fill inventory with "getRiskLevel"
 var inventory = new usersItems();
 getRiskLevel();
 
 function callback(response){
-//alert(response);
-//getRiskLevel();
-alert("Purchase Successful!");
+  alert("Purchase Successful!");
 }
 function load(url,data, callback) {
  var xhr1 = new XMLHttpRequest();
@@ -135,29 +127,16 @@ function addToInventory(button) {
  inventory.push(items[index]);
  funds -= parseFloat(items[index].properties.price);
  document.getElementById("fundlabel").innerHTML=formatCurrency(funds);
+ if (funds < 0) {
+   document.getElementById("fundlabel").classList.remove("text-success");
+   document.getElementById("fundlabel").style.color="red";
+ } else {
+   document.getElementById("fundlabel").classList.add("text-success");
+ }
  document.getElementById("item" + index).style.display="none";
  var url = 'http://localhost:3000/purchase';
-
  load(url, items[index],callback);
-
-
-// xhr.onreadystatechange = function() {
-//   console.log(xhr);
-//   if (xhr.readyState == XMLHttpRequest.DONE) {
-//     alert('Purchase Successful!');
-
-    // bootstrap alert - to be modified
-//     document.getElementById('storeFront').innerHTML = ' <div style="padding: 5px;"> \
-//      <div id="inner-message" class="alert alert-success"> \
-//         \
-//         Purchase Successful! \
-//      \
-// </div>'
-  //  }
-  //console.log(xhr);
- // }
 }
-
 function displayItemsOfType(type) {
   //Display items of a certain type (e.g server, computer...) in the store front
   document.getElementById("storeFront").innerHTML="";
@@ -182,11 +161,16 @@ function displayItemsOfType(type) {
     }
   }
 }
-
-
 window.onload = function() {
   document.getElementById("fundlabel").innerHTML=formatCurrency(funds);
+  if (funds < 0) {
+    document.getElementById("fundlabel").classList.remove("text-success");
+    document.getElementById("fundlabel").style.color="red";
+  }
   //Create the divs in the marketplace from the "items" array
   displayItemsOfType("Computer");
-
+}
+window.onbeforeunload = function() {
+  //Get risk level of current inventory and save it in database or cookie
+  TechRisk = inventory.getUserRisk();
 }
