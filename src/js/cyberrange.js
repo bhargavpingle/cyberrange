@@ -1,3 +1,5 @@
+if (sessionStorage.getItem("funds")== null) {var funds = 16471.91;}
+else {var funds = sessionStorage.getItem("funds")};
 var ages = {
   //This dictionary should be populated with variables from the database
   //changing these variables affects the charts
@@ -27,7 +29,7 @@ var ages = {
     old : 2
   },
 }
-
+var test = sessionStorage.getItem('risk');
 
 window.onload = function() {
   var compctx = document.getElementById('computersChart').getContext('2d');
@@ -150,4 +152,7 @@ window.onload = function() {
         }
       }
   });
+}
+window.onbeforeunload = function() {
+  Techfund = sessionStorage.setItem("funds", funds);
 }
