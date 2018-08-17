@@ -5,7 +5,7 @@ nbar.innerHTML=(
   //When changes to the navbar template are made, HTML should be put here
   //as a long string with '\' at the end of each line.
   ' \
-				<a class="navbar-brand text-white href="#"><i class="fas fa-chess-knight"></i> CyberRange <span class="text-info">beta</span></a> \
+				<a class="navbar-brand text-white" href="cyberrange.html"><i class="fas fa-chess-knight"></i> CyberRange <span class="text-info">beta</span></a> \
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> \
 					<span class="navbar-toggler-icon"></span> \
 				</button> \
@@ -23,8 +23,11 @@ nbar.innerHTML=(
 						<li class="nav-item"> \
 								<a class="nav-link text-white" href="#">Process</a> \
 						</li>					\
-            <li class="nav-item"> \
+            			<li class="nav-item"> \
 							<a class="nav-link text-white" href="risk.html">Risk Landscape</a> \
+						</li> \
+						<li class="nav-item"> \
+							<a class="nav-link text-white" href="security.html">Security Landscape</a> \
 						</li> \
 					</ul> \
 					<div class="nav-item dropdown "> \
