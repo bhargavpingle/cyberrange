@@ -1,11 +1,11 @@
-var funds = 16471.91; //Set initial funds variable here.
-                      //"inventory", defined below stores the items currently
-                      //in the user's inventory, this should be populated by
-                      //information in the database and added to when items are
-                      //purchased from the marketplace
-                      // "items", defined below, stores all items available in the store
+var funds = parseFloat(sessionStorage.getItem("funds"));
+if (funds == null) {funds = 16471.91;}  //Set initial funds variable here.
+                                       //"inventory", defined below stores the items currently
+                                       //in the user's inventory, this should be populated by
+                                       //information in the database and added to when items are
+                                       //purchased from the marketplace
+                                       // "items", defined below, stores all items available in the store
 var xhr = new XMLHttpRequest();
-
 class shopItem {
 
   constructor(object) {
@@ -17,49 +17,63 @@ class shopItem {
       price: object.price,
       type: object.type,
       img: object.img,
-      risk: object.risk
-  }
+      //These will need to become a dictionary as more exploits are added
+      exploitLookupTable: object.exploitLookupTable
+    }
   }
   getDescription() {
     return ('<p>' + this.properties.processor + '<br> ' + this.properties.mem + '<br> ' + this.properties.storage + '</p>');
   }
+  getNumAttempts(lambda) {
+      //Get number of attacks attempted in a year, with attacks modeled as Poisson RV.
+      //Using Knuth's algorithm for generating Poisson RV
+      //var lambda = this.properties.mean;
+      var x = Math.exp(-lambda);
+      var m = 1; var k = 0;
+      do {
+        k=k+1;
+        m*= Math.random();
+      } while (m > x);
+      return k-1;
+    }
+    getNumAttacks(exploit) {
+      //For each attempted exploit, num is incremented if random < probability of success
+      //then num gives the number of successful exploits in a unit of time (year?)
+      var prob=eval("this.properties.exploitLookupTable."+exploit+".probSuccess");
+      var lambda=eval("this.properties.exploitLookupTable."+exploit+".mean");
+      var attempts = getNumAttempts(lambda);
+      var num = 0; var i = 0;
+      while (i < attempts) {
+        if (Math.random() < prob) {num = num+1;}
+        i++;
+      } return num;
+    }
+    getExpectedCost(exploit) {
+      return (eval("this.properties.exploitLookupTable."+exploit+".mean * this.properties.exploitLookupTable."+exploit+".probSuccess * this.properties.exploitLookupTable."+exploit+".cost"));
+    }
 }
 class usersItems {
   constructor(){
     this.inventory = [];
     this.workforce=[];
   }
-getUserRisk() {
-    //total up risk levels for each item in users inventory
-    var risk = 0;
-    for(var i = 0; i < inventory.length; i++) {
-      risk += inventory[i].risk;
-    }
-    return risk;
-  }
  push(item) {this.inventory.push(item);}
  remove(index) {
     this.inventory.splice(index, 1);
   }
+  getRiskScore(type) {
+    var score = 0;
+    if (type == "all") {var inv = this.inventory}
+    else {var inv = this.inventory.filter(item => item.properties.type == type)};
+    for (var i = 0; i < inv.length; i++) {
+      for (var property in inv[i].properties.exploitLookupTable) {
+        if (inv[i].properties.exploitLookupTable.hasOwnProperty(property)) {
+          score += inv[i].getExpectedCost(property);
+        }
+      }
+    } return score;
+  }
 }
-var inventory = new usersItems();
-//Shop item objects, store in "items" to display in store front
-var computer1 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
-processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var computer2 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
-processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var computer3 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
-processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var server1 = new shopItem({name: 'Supermicro SuperChassis CSE-815 4-Bay LFF 1U Server',
- processor: '2x Intel Xeon Processors', mem: '256 GB DDR3', storage: '12TB Storage', price: 2047.00, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var server2 = new shopItem({name: 'HP Proliant DL360p Gen8 Server',
-  processor: '2x Intel Xeon Processors',mem: '128 GB RAM', storage: '600GB Storage', price: 1852, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var server3 = new shopItem({name: 'Refurbished: HP ProLiant DL385 G6 Server',
-    processor: '2x Opteron Processors',mem: '128 GB DDR2', storage: 'No HDD', price: 312.99, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var router1 = new shopItem({name: 'Cisco 1921-SEC/K9',
-        processor: '',mem: '512 MB DDR2', storage: '256 MB Flash Memory', price: 1695, type: "Network", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
-var items = [computer1, computer2, computer3, server1, server2, server3, router1];
-
 function formatCurrency(funds) {
   //convert a decimal number to currency format, e.g, 13.4 --> $13.40
   var fund=String(funds.toFixed(2));
@@ -80,18 +94,49 @@ function formatCurrency(funds) {
   if (neg) {formattedfunds = formattedfunds.substring(0,1) + "-" + formattedfunds.substring(1,formattedfunds.length)}
   return formattedfunds;
 }
+var inventory = new usersItems();
+//Shop item objects, store in "items" to display in store front
+var computer1 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
+processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var computer2 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
+processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var computer3 = new shopItem({name: 'Lenovo -330-15IKB 15.6" Laptop',
+processor: 'Core i3', mem: '8GB Memory', storage: '1TB Hard Drive', price: 500.99, type: "Computer", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var server1 = new shopItem({name: 'Supermicro SuperChassis CSE-815 4-Bay LFF 1U Server',
+ processor: '2x Intel Xeon Processors', mem: '256 GB DDR3', storage: '12TB Storage', price: 2047.00, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var server2 = new shopItem({name: 'HP Proliant DL360p Gen8 Server',
+  processor: '2x Intel Xeon Processors',mem: '128 GB RAM', storage: '600GB Storage', price: 1852, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var server3 = new shopItem({name: 'Refurbished: HP ProLiant DL385 G6 Server',
+    processor: '2x Opteron Processors',mem: '128 GB DDR2', storage: 'No HDD', price: 312.99, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var router1 = new shopItem({name: 'Cisco 1921-SEC/K9',
+        processor: '',mem: '512 MB DDR2', storage: '256 MB Flash Memory', price: 1695, type: "Network", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+var items = [computer1, computer2, computer3, server1, server2, server3, router1];
+
 // function for retrieving risk levels
 function getRiskLevel(){
  xhr.open("GET",'http://localhost:3000/riskLevel',true);
  xhr.setRequestHeader('Content-Type', 'application/json');
+ function nestedObject(arr) {
+   var o = {};
+   for (ob = 0; ob < arr.length; ob++) {
+     eval("o." + arr[ob].exploit + "= " + "{ \
+       mean_attempts: arr[ob].mean_attempts, \
+       pr_sucess: arr[ob].pr_success, \
+       cost: arr[ob].cost \
+     }" );
+   } return o;
+ }
  xhr.onreadystatechange = function() {
    if (xhr.readyState === 4) {
      var risk_result=xhr.response;
      var json_result = JSON.parse(risk_result);
-     for(var i = 0; i < json_result.length; i++) {
+     var numExploits;
+     numExploits = json_result.filter(item => item.asset_id == json_result[0].asset_id).length;
+     for(var i = 0; i < json_result.length/numExploits; i++) {
+       x=json_result.filter(item => item.asset_id == json_result[i].asset_id)
         inventory.push(new shopItem({
-        type: json_result[i].assetType,
-        risk: json_result[i].risk_level
+        type: json_result[i].asset_type,
+        exploitLookupTable: nestedObject(x)
       }))
     }
    }
@@ -102,15 +147,11 @@ function getRiskLevel(){
 var inventory = new usersItems();
 getRiskLevel();
 
-function callback(response){
-  alert("Purchase Successful!");
-}
-function load(url,data, callback) {
+
+function load(url, data) {
  var xhr1 = new XMLHttpRequest();
  xhr1.onreadystatechange = function() {
-   if (xhr1.readyState === 4) {
-     callback(xhr1.response);
-   }
+   if (xhr1.readyState === 4) { alert("Purchase Successful!"); }
  }
  xhr1.open('POST', url, true);
  xhr1.setRequestHeader('Content-Type', 'application/json');
@@ -135,7 +176,7 @@ function addToInventory(button) {
  }
  document.getElementById("item" + index).style.display="none";
  var url = 'http://localhost:3000/purchase';
- load(url, items[index],callback);
+ load(url, items[index]);
 }
 function displayItemsOfType(type) {
   //Display items of a certain type (e.g server, computer...) in the store front
@@ -171,6 +212,34 @@ window.onload = function() {
   displayItemsOfType("Computer");
 }
 window.onbeforeunload = function() {
-  //Get risk level of current inventory and save it in database or cookie
-  TechRisk = inventory.getUserRisk();
+  //save relevant variables in session storage
+  var TechRisk = sessionStorage.setItem("riskAll", inventory.getRiskScore("all"));
+  var Techfund = sessionStorage.setItem("funds", funds);
+  sessionStorage.setItem("riskComputer", inventory.getRiskScore("Computer"));
+  sessionStorage.setItem("riskServer", inventory.getRiskScore("Server"));
+  sessionStorage.setItem("riskNetwork", inventory.getRiskScore("NetworkDevice"));
+  sessionStorage.setItem("riskSpec", inventory.getRiskScore("SpecDevice"));
+}
+function getUserRisk(lambda) {
+      //Get number of attacks in a year, with attacks modeled as Poisson RV.
+      //Using Knuth's algorithm for generating Poisson RV
+      //var lambda = this.properties.mean;
+      var x = Math.exp(-lambda);
+      var m = 1; var k = 0;
+      do {
+        k=k+1;
+        m*= Math.random();
+      } while (m > x);
+      return k-1;
+}
+function getNumAttacks(lambda, prob) {
+  var attempts = getUserRisk(lambda);
+  var num = 0; var i = 0;
+  while (i < attempts) {
+    if (Math.random() < prob) {num = num+1;}
+    i++;
+  } return num;
+}
+function advance(){
+  
 }
