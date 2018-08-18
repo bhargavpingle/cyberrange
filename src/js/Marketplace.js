@@ -1,5 +1,5 @@
 var funds = parseFloat(sessionStorage.getItem("funds"));
-if (funds == null) {funds = 16471.91;}  //Set initial funds variable here.
+if (funds == null|| isNaN(funds)) {funds = 16471.91;}  //Set initial funds variable here.
                                        //"inventory", defined below stores the items currently
                                        //in the user's inventory, this should be populated by
                                        //information in the database and added to when items are
@@ -39,8 +39,8 @@ class shopItem {
     getNumAttacks(exploit) {
       //For each attempted exploit, num is incremented if random < probability of success
       //then num gives the number of successful exploits in a unit of time (year?)
-      var prob=eval("this.properties.exploitLookupTable."+exploit+".probSuccess");
-      var lambda=eval("this.properties.exploitLookupTable."+exploit+".mean");
+      var prob=eval("this.properties.exploitLookupTable."+exploit+".pr_success");
+      var lambda=eval("this.properties.exploitLookupTable."+exploit+".mean_attempts");
       var attempts = getNumAttempts(lambda);
       var num = 0; var i = 0;
       while (i < attempts) {
@@ -49,7 +49,7 @@ class shopItem {
       } return num;
     }
     getExpectedCost(exploit) {
-      return (eval("this.properties.exploitLookupTable."+exploit+".mean * this.properties.exploitLookupTable."+exploit+".probSuccess * this.properties.exploitLookupTable."+exploit+".cost"));
+      return (eval("this.properties.exploitLookupTable."+exploit+".mean_attempts * this.properties.exploitLookupTable."+exploit+".pr_success * this.properties.exploitLookupTable."+exploit+".cost"));
     }
 }
 class usersItems {
@@ -112,21 +112,22 @@ var router1 = new shopItem({name: 'Cisco 1921-SEC/K9',
         processor: '',mem: '512 MB DDR2', storage: '256 MB Flash Memory', price: 1695, type: "Network", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
 var items = [computer1, computer2, computer3, server1, server2, server3, router1];
 
+function nestedObject(arr) {
+  var o = {};
+  for (ob = 0; ob < arr.length; ob++) {
+    eval("o." + arr[ob].exploit + "= " + "{ \
+      mean_attempts: arr[ob].mean_attempts, \
+      pr_success: arr[ob].pr_success, \
+      cost: arr[ob].cost \
+    }" );
+  } return o;
+}
+
 // function for retrieving risk levels
 function getRiskLevel(){
  xhr.open("GET",'http://localhost:3000/riskLevel',true);
  xhr.setRequestHeader('Content-Type', 'application/json');
- function nestedObject(arr) {
-   var o = {};
-   for (ob = 0; ob < arr.length; ob++) {
-     eval("o." + arr[ob].exploit + "= " + "{ \
-       mean_attempts: arr[ob].mean_attempts, \
-       pr_sucess: arr[ob].pr_success, \
-       cost: arr[ob].cost \
-     }" );
-   } return o;
- }
- xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function() {
    if (xhr.readyState === 4) {
      var risk_result=xhr.response;
      var json_result = JSON.parse(risk_result);
@@ -147,11 +148,36 @@ function getRiskLevel(){
 var inventory = new usersItems();
 getRiskLevel();
 
+function callback1(response, index){
+  //alert(response);
+  //getRiskLevel();
+  alert("Purchase Successful!");
+  // to fetch data for the purchased item
+  var xhr2 = new XMLHttpRequest();
+  xhr2.onreadystatechange = function() {
+  if (xhr2.readyState === 4) 
+  { 
+    callback2(xhr2.response,index);
+  }
+  }
+  xhr2.open('GET','http://localhost:3000/purchaseData',true);
+  xhr2.setRequestHeader('Content-Type', 'application/json');
+  xhr2.send();
+}
 
-function load(url, data) {
+function callback2(response2, index){
+  var return_data=JSON.parse(response2);
+  console.log(return_data);
+  items[index].properties.exploitLookupTable=nestedObject(return_data);
+}
+
+function load(url, index, data, callback1) {
  var xhr1 = new XMLHttpRequest();
  xhr1.onreadystatechange = function() {
-   if (xhr1.readyState === 4) { alert("Purchase Successful!"); }
+   if (xhr1.readyState === 4)
+    { 
+    callback1(xhr1.response, index);
+    }
  }
  xhr1.open('POST', url, true);
  xhr1.setRequestHeader('Content-Type', 'application/json');
@@ -176,8 +202,9 @@ function addToInventory(button) {
  }
  document.getElementById("item" + index).style.display="none";
  var url = 'http://localhost:3000/purchase';
- load(url, items[index]);
+ load(url, index, items[index], callback1);
 }
+
 function displayItemsOfType(type) {
   //Display items of a certain type (e.g server, computer...) in the store front
   document.getElementById("storeFront").innerHTML="";
