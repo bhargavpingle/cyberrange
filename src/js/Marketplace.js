@@ -109,7 +109,7 @@ var server2 = new shopItem({name: 'HP Proliant DL360p Gen8 Server',
 var server3 = new shopItem({name: 'Refurbished: HP ProLiant DL385 G6 Server',
     processor: '2x Opteron Processors',mem: '128 GB DDR2', storage: 'No HDD', price: 312.99, type: "Server", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
 var router1 = new shopItem({name: 'Cisco 1921-SEC/K9',
-        processor: '',mem: '512 MB DDR2', storage: '256 MB Flash Memory', price: 1695, type: "Network", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
+        processor: '',mem: '512 MB DDR2', storage: '256 MB Flash Memory', price: 1695, type: "NetworkDevice", img: '<img class="mr-3" src="http://via.placeholder.com/120x120" alt="Generic placeholder image">'});
 var items = [computer1, computer2, computer3, server1, server2, server3, router1];
 
 function nestedObject(arr) {
@@ -131,6 +131,7 @@ function getRiskLevel(){
    if (xhr.readyState === 4) {
      var risk_result=xhr.response;
      var json_result = JSON.parse(risk_result);
+     //console.log(json_result);
      var numExploits;
      numExploits = json_result.filter(item => item.asset_id == json_result[0].asset_id).length;
      for(var i = 0; i < json_result.length/numExploits; i++) {

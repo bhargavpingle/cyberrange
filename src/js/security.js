@@ -25,9 +25,10 @@ var cost = {
   computers: parseFloat(sessionStorage.getItem("riskComputer")),
   servers: parseFloat(sessionStorage.getItem("riskServer")),
   network: parseFloat(sessionStorage.getItem("riskNetwork")),
+  spdevice: 20,
   //These do not match categories of items in the database
-  printers: 20,
-  iot: 40,
+//   printers: 20,
+//   iot: 40,
 
   total:parseFloat(sessionStorage.getItem("riskAll"))
   }
@@ -43,8 +44,9 @@ window.onload =function(){
     var compCost = document.getElementById('computer');
     var servCost = document.getElementById('server');
     var netCost = document.getElementById('network');
-    var printCost = document.getElementById('printer');
-    var iotCost = document.getElementById('iot');
+    var spCost = document.getElementById('spdevice');
+    // var printCost = document.getElementById('printer');
+    // var iotCost = document.getElementById('iot');
 
     riskTolerance.innerHTML=fund;
     currentRisk.innerHTML=formatCurrency(cost.total);
@@ -52,8 +54,9 @@ window.onload =function(){
     compCost.innerHTML=formatCurrency(cost.computers);
     servCost.innerHTML=formatCurrency(cost.servers);
     netCost.innerHTML=formatCurrency(cost.network);
-    printCost.innerHTML=formatCurrency(cost.printers);
-    iotCost.innerHTML=formatCurrency(cost.iot);
+    spCost.innerHTML=formatCurrency(cost.spdevice);
+    // printCost.innerHTML=formatCurrency(cost.printers);
+    // iotCost.innerHTML=formatCurrency(cost.iot);
 
 
     var chart = new Chart(ctx, {
@@ -62,12 +65,12 @@ window.onload =function(){
 
         // The data for our dataset
         data: {
-            labels: ["Computers", "Servers", "Network Devices", "Printers","IOT"],
+            labels: ["Computers", "Servers", "Network Devices", "Special Devices"],
             datasets: [{
                 label: "My First dataset",
-                backgroundColor: ['#28A745','#17A2B8','#6C757D','#007BFF','#343A40'],
+                backgroundColor: ['#28A745','#17A2B8','#6C757D','#007BFF'],
                 // borderColor: 'rgb(255, 99, 132)',
-                data: [cost.computers, cost.servers, cost.network, cost.printers, cost.iot],
+                data: [cost.computers, cost.servers, cost.network, cost.spdevice],
             }]
         },
 

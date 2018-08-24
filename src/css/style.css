@@ -29,3 +29,12 @@ a:link {
 canvas {
   height: 400px;
 }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -50px;
+    margin-left: -35px;
+}
