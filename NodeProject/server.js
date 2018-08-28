@@ -3,6 +3,8 @@ var app = express();
 var path = require('path');
 var db_connection = require('./model/db_connection');
 var bodyParser = require('body-parser');
+// to store exploit_map data of newly purchased item as and when purchased
+var return_data;
 
 app.use(express.static(__dirname + '/view'));
 app.use(bodyParser.json());
@@ -65,10 +67,22 @@ app.post('/purchase', function(req, res){
 //         console.log('**** Filter Response:');
 //         console.log(response[0].risk_level);
        // db_connection.query('insert into asset_exploit_map set ?',{asset_type:req.body.value.type,exploit:'DOS',risk_level:response[0].risk_level}, function(err,response){
-        db_connection.query('insert into assets_inventory set ?',{asset_type:req.body.value.type}, function(err,response){
+        db_connection.query('insert into assets_inventory set ?',{asset_type:req.body.value.properties.type}, function(err,response){
             if(err) throw err;
         console.log('Insert successful');
+        db_connection.query('select * from asset_lookup where asset_type = ?',[req.body.value.properties.type],function(err,result2,fields){
+            if(err) throw err;
+            
+            return_data = result2;
+            console.log(return_data);
         });
+    
+       });
+
+        // db_connection.query('select last_insert_id() as newID',function(err,result1,fields){
+        //     if (err) throw err;
+        //     console.log(result1);
+        // });
      
     // });   
     
@@ -77,13 +91,19 @@ app.post('/purchase', function(req, res){
     
 });
 
+// get exploit_map data of newly purchased item as and when purchased
+app.get('/purchaseData',function(req,res){
+    console.log('purchaseData api called');
+    res.send(return_data);    
+});
+
 // get risk levels of assets
 app.get('/riskLevel',function(req,res){
     console.log('risk level called');
     db_connection.query('call return_risklevel()',function(err,result,fields) {
 
         if(err) throw err;        
-        console.log(result[0]);
+       // console.log(result[0]);
         res.send(result[0]);
     });
 });
