@@ -125,13 +125,13 @@ function nestedObject(arr) {
 
 // function for retrieving risk levels
 function getRiskLevel(){
- xhr.open("GET",'http://localhost:3000/riskLevel',true);
+ xhr.open("GET",'http://131.183.222.85:8080/riskLevel',true);
  xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
    if (xhr.readyState === 4) {
      var risk_result=xhr.response;
      var json_result = JSON.parse(risk_result);
-     //console.log(json_result);
+     console.log(json_result);
      var numExploits;
      numExploits = json_result.filter(item => item.asset_id == json_result[0].asset_id).length;
      for(var i = 0; i < json_result.length/numExploits; i++) {
@@ -161,7 +161,7 @@ function callback1(response, index){
     callback2(xhr2.response,index);
   }
   }
-  xhr2.open('GET','http://localhost:3000/purchaseData',true);
+  xhr2.open('GET','http://131.183.222.85:8080/purchaseData',true);
   xhr2.setRequestHeader('Content-Type', 'application/json');
   xhr2.send();
 }
@@ -202,7 +202,7 @@ function addToInventory(button) {
    document.getElementById("fundlabel").classList.add("text-success");
  }
  document.getElementById("item" + index).style.display="none";
- var url = 'http://localhost:3000/purchase';
+ var url = 'http://131.183.222.85:8080/purchase';
  load(url, index, items[index], callback1);
 }
 
