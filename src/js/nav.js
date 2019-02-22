@@ -1,3 +1,19 @@
+function addLoadEvent(func)
+{
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function')
+    {
+        window.onload = func;
+    }
+    else
+    {
+        window.onload = function()
+        {
+            oldonload();
+            func();
+        }
+    }
+}
 var nbar = document.createElement("nav");
 //navbar classes added here
 nbar.className="navbar navbar-expand-lg navbar-light bg-dark";
@@ -52,3 +68,7 @@ nbar.innerHTML=(
   ');
 anchor = document.body.firstChild;
 document.body.insertBefore(nbar, anchor);
+var foot = document.createElement("h6");
+foot.className=("text-center text-white-50 bg-secondary py-3 mb-0");
+foot.innerHTML="&copy;2018 R1Studio; Simulation and Gaming Studio"
+addLoadEvent(function() {document.body.appendChild(foot)})
