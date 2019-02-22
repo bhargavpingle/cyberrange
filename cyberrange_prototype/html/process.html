@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <title>Process</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then process.js, then Bootstrap JS, then chart.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="../js/process.js"></script>
+    <script src="../js/nav.js"></script>
+
+    
+    <!-- page Title -->
+    <h1 class="display-3 text-center text-primary shadow-sm p-3 mb-5 bg-light rounded">[ Process ]</h1>
+
+    <!-- page Body -->
+    <div class="container-fluid">
+            <!-- Decision -->
+            <div class="row" style="margin-left:14%">
+                 
+                <div class="col-md-3 card text-center"> 
+                    <div class="card-img-top text-dark text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-wrench fa-10x"></i> </div> 
+                        <div class="card-body"> 
+                            <h1 class="display-4 text-muted"> <span id="processName1"></span></h1> 
+                            <p class="card-text"> 
+                                Process<br> 
+                                <span class="text-primary lead">Decision Level: <span id="declev1"></span></span><br> 
+                                <span class="text-primary lead">Process Cost Factor: <span id="profac1"></span></span> 
+                            </p> 
+                            <div class="row p-2 mx-0"> 
+                            <div class="col-md-6">
+                                <select id="decisions1" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                    <option class="col-md-6" value = "0">0</option>
+                                    <option class="col-md-6" value = "10">10</option>
+                                    <option class="col-md-6" value = "20">20</option>
+                                    <option class="col-md-6" value = "30">30</option>
+                                    <option class="col-md-6" value = "40">40</option>
+                                    <option class="col-md-6" value = "50">50</option>
+                                    <option class="col-md-6" value = "60">60</option>
+                                    <option class="col-md-6" value = "70">70</option>
+                                    <option class="col-md-6" value = "80">80</option>
+                                    <option class="col-md-6" value = "90">90</option>
+                                    <option class="col-md-6" value = "100">100</option>
+                                </select>
+                            </div> 
+                            <div class="col-md-6"><button class="btn btn-dark" id="submit1">Make Decision</button></div> 
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="col-md-3 card text-center"> 
+                    <div class="card-img-top text-info text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fab fa-connectdevelop fa-10x"></i> </div> 
+                        <div class="card-body"> 
+                            <h1 class="display-4 text-muted"> <span id="processName2"></span></h1> 
+                            <p class="card-text"> 
+                                Process<br> 
+                                <span class="text-primary lead">Decision Level: <span id="declev2"></span></span><br> 
+                                <span class="text-primary lead">Process Cost Factor: <span id="profac2"></span></span> 
+                            </p> 
+                            <div class="row p-2 mx-0"> 
+                            <div class="col-md-6">
+                                <select id="decisions2" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                    <option class="col-md-6" value = "0">0</option>
+                                    <option class="col-md-6" value = "10">10</option>
+                                    <option class="col-md-6" value = "20">20</option>
+                                    <option class="col-md-6" value = "30">30</option>
+                                    <option class="col-md-6" value = "40">40</option>
+                                    <option class="col-md-6" value = "50">50</option>
+                                    <option class="col-md-6" value = "60">60</option>
+                                    <option class="col-md-6" value = "70">70</option>
+                                    <option class="col-md-6" value = "80">80</option>
+                                    <option class="col-md-6" value = "90">90</option>
+                                    <option class="col-md-6" value = "100">100</option>
+                                </select>
+                            </div> 
+                            <div class="col-md-6"><button class="btn btn-info" id="submit2">Make Decision</button></div> 
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="col-md-3 card text-center"> 
+                    <div class="card-img-top text-success text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-book-reader fa-10x"></i> </div> 
+                        <div class="card-body"> 
+                            <h1 class="display-4 text-muted"> <span id="processName3"></span></h1> 
+                            <p class="card-text"> 
+                                Process<br> 
+                                <span class="text-primary lead">Decision Level: <span id="declev3"></span></span><br> 
+                                <span class="text-primary lead">Process Cost Factor: <span id="profac3"></span></span> 
+                            </p> 
+                            <div class="row p-2 mx-0"> 
+                            <div class="col-md-6">
+                                <select id="decisions3" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                    <option class="col-md-6" value = "0">0</option>
+                                    <option class="col-md-6" value = "10">10</option>
+                                    <option class="col-md-6" value = "20">20</option>
+                                    <option class="col-md-6" value = "30">30</option>
+                                    <option class="col-md-6" value = "40">40</option>
+                                    <option class="col-md-6" value = "50">50</option>
+                                    <option class="col-md-6" value = "60">60</option>
+                                    <option class="col-md-6" value = "70">70</option>
+                                    <option class="col-md-6" value = "80">80</option>
+                                    <option class="col-md-6" value = "90">90</option>
+                                    <option class="col-md-6" value = "100">100</option>
+                                </select>
+                            </div>                             
+                            <div class="col-md-6"><button class="btn btn-success" id="submit3">Make Decision</button></div> 
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="col-md-3 card text-center"> 
+                    <div class="card-img-top text-danger text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-id-badge fa-10x"></i> </div> 
+                        <div class="card-body"> 
+                            <h1 class="display-4 text-muted"> <span id="processName4"></span></h1> 
+                            <p class="card-text"> 
+                                Process<br> 
+                                <span class="text-primary lead">Decision Level: <span id="declev4"></span></span><br> 
+                                <span class="text-primary lead">Process Cost Factor: <span id="profac4"></span></span> 
+                            </p> 
+                            <div class="row p-2 mx-0"> 
+                            <div class="col-md-6">
+                                <select id="decisions4" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                    <option class="col-md-6" value = "0">0</option>
+                                    <option class="col-md-6" value = "10">10</option>
+                                    <option class="col-md-6" value = "20">20</option>
+                                    <option class="col-md-6" value = "30">30</option>
+                                    <option class="col-md-6" value = "40">40</option>
+                                    <option class="col-md-6" value = "50">50</option>
+                                    <option class="col-md-6" value = "60">60</option>
+                                    <option class="col-md-6" value = "70">70</option>
+                                    <option class="col-md-6" value = "80">80</option>
+                                    <option class="col-md-6" value = "90">90</option>
+                                    <option class="col-md-6" value = "100">100</option>
+                                </select>
+                            </div>                             
+                            <div class="col-md-6"><button class="btn btn-danger"  id="submit4">Make Decision</button></div> 
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="col-md-3 card text-center"> 
+                    <div class="card-img-top text-warning text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-id-card fa-10x"></i> </div> 
+                        <div class="card-body"> 
+                            <h1 class="display-4 text-muted"> <span id="processName5"></span></h1> 
+                            <p class="card-text"> 
+                                Process<br> 
+                                <span class="text-primary lead">Decision Level: <span id="declev5"></span></span><br> 
+                                <span class="text-primary lead">Process Cost Factor: <span id="profac5"></span></span> 
+                            </p> 
+                            <div class="row p-2 mx-0"> 
+                            <div class="col-md-6">
+                                <select id="decisions5" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                    <option class="col-md-6" value = "0">0</option>
+                                    <option class="col-md-6" value = "10">10</option>
+                                    <option class="col-md-6" value = "20">20</option>
+                                    <option class="col-md-6" value = "30">30</option>
+                                    <option class="col-md-6" value = "40">40</option>
+                                    <option class="col-md-6" value = "50">50</option>
+                                    <option class="col-md-6" value = "60">60</option>
+                                    <option class="col-md-6" value = "70">70</option>
+                                    <option class="col-md-6" value = "80">80</option>
+                                    <option class="col-md-6" value = "90">90</option>
+                                    <option class="col-md-6" value = "100">100</option>
+                                </select>
+                            </div>                             
+                            <div class="col-md-6"><button class="btn btn-warning" id="submit5">Make Decision</button></div> 
+                        </div> 
+                    </div> 
+                </div>
+
+                <div class="col-md-3 card text-center"> 
+                        <div class="card-img-top text-secondary text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-door-open fa-10x"></i> </div> 
+                            <div class="card-body"> 
+                                <h1 class="display-4 text-muted"> <span id="processName6"></span></h1> 
+                                <p class="card-text"> 
+                                    Process<br> 
+                                    <span class="text-primary lead">Decision Level: <span id="declev6"></span></span><br> 
+                                    <span class="text-primary lead">Process Cost Factor: <span id="profac6"></span></span> 
+                                </p> 
+                                <div class="row p-2 mx-0"> 
+                                <div class="col-md-6">
+                                    <select id="decisions6" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                        <option class="col-md-6" value = "0">0</option>
+                                        <option class="col-md-6" value = "10">10</option>
+                                        <option class="col-md-6" value = "20">20</option>
+                                        <option class="col-md-6" value = "30">30</option>
+                                        <option class="col-md-6" value = "40">40</option>
+                                        <option class="col-md-6" value = "50">50</option>
+                                        <option class="col-md-6" value = "60">60</option>
+                                        <option class="col-md-6" value = "70">70</option>
+                                        <option class="col-md-6" value = "80">80</option>
+                                        <option class="col-md-6" value = "90">90</option>
+                                        <option class="col-md-6" value = "100">100</option>
+                                    </select>
+                                </div>  
+                                <div class="col-md-6"><button class="btn btn-secondary" id="submit6">Make Decision</button></div> 
+                            </div> 
+                        </div> 
+                    </div>
+
+                    <div class="col-md-3 card text-center"> 
+                            <div class="card-img-top text-primary text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-desktop fa-10x"></i> </div> 
+                                <div class="card-body"> 
+                                    <h1 class="display-4 text-muted"> <span id="processName7"></span></h1> 
+                                    <p class="card-text"> 
+                                        Process<br> 
+                                        <span class="text-primary lead">Decision Level: <span id="declev7"></span></span><br> 
+                                        <span class="text-primary lead">Process Cost Factor: <span id="profac7"></span></span> 
+                                    </p> 
+                                    <div class="row p-2 mx-0"> 
+                                    <div class="col-md-6">
+                                        <select id="decisions7" style="width:80pt; height:25pt; padding-left: calc(50% - 1em)">
+                                            <option class="col-md-6" value = "0">0</option>
+                                            <option class="col-md-6" value = "10">10</option>
+                                            <option class="col-md-6" value = "20">20</option>
+                                            <option class="col-md-6" value = "30">30</option>
+                                            <option class="col-md-6" value = "40">40</option>
+                                            <option class="col-md-6" value = "50">50</option>
+                                            <option class="col-md-6" value = "60">60</option>
+                                            <option class="col-md-6" value = "70">70</option>
+                                            <option class="col-md-6" value = "80">80</option>
+                                            <option class="col-md-6" value = "90">90</option>
+                                            <option class="col-md-6" value = "100">100</option>
+                                        </select>
+                                    </div>                                     
+                                    <div class="col-md-6"><button class="btn btn-primary" id="submit7">Make Decision</button></div> 
+                                </div> 
+                            </div> 
+                        </div>
+            </div>        
+         </div>
+     </div>    
+
+<!-- footer -->
+   <h6 class="text-center text-white-50 bg-secondary py-3 mb-0">&copy;2018 R1Studio; Simulation and Gaming Studio</h6>
+
+</body>
+</html>
+

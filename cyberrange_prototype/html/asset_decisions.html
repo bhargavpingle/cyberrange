@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/asset_decisions.css">
+
+    <title>Asset Decisions</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then chart.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/assetDecision.js"></script>
+
+    <!-- page Title -->
+    <h1 class="display-3 text-center text-primary shadow-sm p-3 mb-5 bg-light rounded">[ Assets ]</h1>
+
+    <!-- page Body -->
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <!-- Decision -->
+            <div class="row col-md-7 pl-5 pb-5">
+                  <div class="owl-carousel owl-theme" id="car">
+                  </div>
+            </div>
+                <!-- tiles-->
+
+                <div class="row col-md-5  mx-0" id="tiles">
+
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(Computers)'><i class="fas fa-user-shield"></i><br>Computers</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(Laptops)'><i class="fas fa-upload"></i><br>Laptops</button>
+
+                    <button type="button" class="btn btn-outline-secondary" onclick='javascript:SecurityShow(Servers)'><i class="fas fa-server"></i><br>Servers </button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(networkDevices)'><i class="fas fa-desktop"></i><br>Network<br>Devices</button>
+
+                    <button type="button" class="btn btn-outline-secondary "onclick='javascript:SecurityShow(iot)'><i class="fas fa-database"></i><br>IoT</button>
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(software)'><i class="fas fa-mobile-alt"></i><br>Software</button>
+
+                    <!--<button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(6)' ><i class="fas fa-code"></i><br>App<br> Developer</button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(7)' ><i class="fas fa-power-off"></i><br>Service<br>Desk</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(8)' ><i class="fas fa-user-cog"></i><br>Desktop<br>Support</button>-->
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+<!-- footer -->
+   <h6 class="text-center text-white-50 bg-secondary py-3 mb-0">&copy;2018 R1Studio; Simulation and Gaming Studio</h6>
+
+</body>
+</html>

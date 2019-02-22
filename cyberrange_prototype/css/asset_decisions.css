@@ -1,0 +1,17 @@
+.card {
+  height: 99%;
+}
+.display-4 {
+  height: 18.965%;
+}
+.Disptitle {
+  height: 18.965%;
+}
+.asset-buttons {
+  position: absolute;
+  bottom: 5%;
+}
+.owl-prev, .owl-next{
+  width: 2%;
+  border: solid black 1px;
+}

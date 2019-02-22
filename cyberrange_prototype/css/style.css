@@ -1,0 +1,289 @@
+html,
+body {
+	font-size: 14px !important;
+}
+h1 {
+	font-size: 1.602em;
+}
+h2 {
+	font-size: 1.424em;
+}
+h3 {
+	font-size: 1.266em;
+}
+h4 {
+	font-size: 1.125em;
+}
+h5 {
+	font-size: 0.889em;
+}
+h6 {
+	font-size: 0.79em;
+}
+.display-1 {
+	font-size: 3.906em;
+}
+.display-2 {
+	font-size: 3.125em;
+}
+.display-3 {
+	font-size: 2.5em;
+}
+.display-4 {
+	font-size: 2em;
+}
+
+/* // Medium devices (tablets, 48em and up)
+// 
+// At this point you have overridden Bootstraps rem's and are
+// into module based font sizes should you require it. 
+//
+// I took a while over this change because I felt that there
+// is no reason why I cant use a modified scale on another 
+// device size. So I did, the headings have now taken on
+// "Perfect Fourth" and the dislpay-* has been put to the
+// Bootstrap defaults.
+//
+//------------------------------------------------------------// */
+@media (min-width: 48em) {
+	h1 {
+	  font-size: 2.441em;
+	}
+	h2 {
+		font-size: 1.953em;
+	}
+	h3 {
+		font-size: 1.563em;
+	}
+	h4 {
+		font-size: 1.25em;
+	}
+	.display-1 {
+		font-size: 6em;
+	}
+	.display-2 {
+		font-size: 5.5em;
+	}
+	.display-3 {
+		font-size: 4.5em;
+	}
+	.display-4 {
+		font-size: 3.5em;
+	}
+}
+
+/* // Large devices (desktops, 62em and up) */
+@media (min-width: 62em) {
+	html,
+	body {
+		font-size: 16px !important;
+	}
+}
+
+/* // Extra large devices (large desktops, 75em and up) */
+@media (min-width: 75em) {
+	html,
+	body {
+		font-size: 18px !important;
+	}
+}
+
+/* // Pen Specific Styles */
+.jumbotron {
+	font-size: 16px;
+	@media (min-width: 62em) {
+		font-size: 20px;
+	}
+	h1{
+		border-bottom: 4px solid #0275d8;
+	}
+	p.lead {
+		border-radius: 4px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.card{
+    /* border: 1px solid red; */
+    margin: 1%;
+    padding-top: 1%;
+}
+
+#chartcard{
+margin-left:100px;
+}
+
+
+#cards{
+	padding-left: 1%;
+	width:80%;
+	height:80%
+}
+
+/* #decisions{
+    margin:5% 10% 8% 10%
+} */
+
+#decisions .col-md-4{
+    /* margin:5% 10% 8% 10%; */
+    margin-top: 5%;
+    margin-bottom: 8%
+}
+
+#decisions .col-md-4 .fas{
+    padding-bottom: 20px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+canvas {
+  height: 400px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -50px;
+    margin-left: -35px;
+}
+
+
+
+#grid .card{
+	width:50%;
+}
+
+#tiles .btn{
+    width:100px;
+    height:100px;
+}
+.card{
+    /* border: 1px solid red; */
+    margin: 1.5%;
+    padding-top: 1%;   
+}
+
+#cards{
+    padding-left: 1%
+}
+
+/* #decisions{
+    margin:5% 10% 8% 10%
+} */
+
+#decisions .col-md-4{
+    /* margin:5% 20px 8% 10%; */
+    margin-top: 5%;
+    margin-bottom: 8%
+}
+
+#decisions .col-md-4 .fas{
+    padding-bottom: 20px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+#currentRisk{
+    padding: 10%;
+}
+
+#riskTolerance{
+    padding: 10%;
+}
+#tiles .btn{
+    width:200px;
+    height:200px;
+}
+
+.fa-user-tie:before {
+    content: "\f508";
+    font-size: 80%;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+    /* show 3 items */
+    .carousel-inner .active,
+    .carousel-inner .active + .carousel-item,
+    .carousel-inner .active + .carousel-item + .carousel-item {
+      display: block;
+    }
+  
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+      transition: none;
+    }
+  
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+  
+    .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+      position: absolute;
+      top: 0;
+      right: -33.3333%;
+      z-index: -1;
+      display: block;
+      visibility: visible;
+    }
+  
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+  
+    /* farthest right hidden item must be abso position for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      display: block;
+      visibility: visible;
+    }
+  
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+      display: block;
+      visibility: visible;
+    }
+  }

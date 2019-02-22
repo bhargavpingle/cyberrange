@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
+    <title>People Decisions</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then chart.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/peopleDecision.js"></script>
+
+    <!-- page Title -->
+    <h1 class="display-3 text-center text-primary shadow-sm p-3 mb-5 bg-light rounded">[ People ]</h1>
+
+    <!-- page Body -->
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <!-- Decision -->
+            <div class="row col-md-8 pl-5 pb-5">
+
+                        <div class="col-md-3 card text-center   ">
+                            <div class="card-img-top text-secodary text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-user-tie fa-10x"></i>  </div>
+                                <div class="card-body">
+                                    <h1 class="display-4 text-muted"> <span id="peopleTitle1"></span></h5>
+                                    <p class="card-text">
+                                        <h1 class="display-2 mb-0"id="employeeNumber1"></h1>
+                                        employees<br>
+                                        <span class="text-primary lead">Cost: $<span id="costPerEmployee1"></span></span><br>
+                                        <span class="text-primary lead">Training: $<span id="trainingPerEmployee1"></span></span>
+                                    </p>
+                                    <div class="row p-2 mx-0">
+                                        <div class="col-md-4"><a onclick="javascript:increase(1);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                        <div class="col-md-4"><a onclick="javascript:decrease(1);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+                                        <div class="col-md-4"><a href="people_security.html" data-toggle="tooltip"  title="Train" class="btn btn-info "><i class="fas fa-award"></i></a></div>
+                                    </div>
+
+                                </div>
+                        </div>
+
+                        <div class="col-md-3 card text-center">
+                                <div class="card-img-top text-info text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-user-tie fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h1 class="display-4 text-muted" > <span id="peopleTitle2"></span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber2"></h1>
+                                            employees<br>
+                                            <span class="text-primary lead">Cost: $<span id="costPerEmployee2"></span></span><br>
+                                            <span class="text-primary lead">Training: $<span id="trainingPerEmployee2"></span> </span>
+                                        </p>
+                                        <div class="row p-2 mx-0">
+                                                <div class="col-md-4"><a onclick="javascript:increase(2);" data-toggle="tooltip"  title="Add" class="btn btn-success "><i class="fas fa-plus"></i></a></div>
+                                                <div class="col-md-4"><a onclick="javascript:decrease(2);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+                                                <div class="col-md-4"><a href="people_security.html" data-toggle="tooltip"  title="Train" class="btn btn-info "><i class="fas fa-award"></i></a></div>
+                                        </div>
+                                    </div>
+                        </div>
+
+                        <div class="col-md-3 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-user-tie fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h1 class="display-4 text-muted"><span id="peopleTitle3"></span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            employees<br>
+                                            <span class="text-primary lead">Cost: $<span id="costPerEmployee3"></span> </span><br>
+                                            <span class="text-primary lead">Training: $<span id="trainingPerEmployee3"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                            <div class="col-md-4"><a onclick="javascript:increase(3);" data-toggle="tooltip"  title="Add" class="btn btn-success "><i class="fas fa-plus"></i></a></div>
+                                            <div class="col-md-4"><a onclick="javascript:decrease(3);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+                                            <div class="col-md-4"><a href="people_security.html" data-toggle="tooltip"  title="Train" class="btn btn-info "><i class="fas fa-award"></i></a></div>
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                </div>
+
+                <!-- tiles-->
+
+                <div class="row col-md-4  mx-0" id="tiles">
+
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(0)'><i class="fas fa-user-shield"></i><br>Security</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(1)'><i class="fas fa-upload"></i><br>Network <br>Engineer</button>
+
+                    <button type="button" class="btn btn-outline-secondary" onclick='javascript:SecurityShow(2)'><i class="fas fa-server"></i><br>Server <br>Admin </button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(3)'><i class="fas fa-desktop"></i><br>Desktop<br>Engineer</button>
+
+                    <button type="button" class="btn btn-outline-secondary "onclick='javascript:SecurityShow(4)'><i class="fas fa-database"></i><br>DBA</button>
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(5)'><i class="fas fa-mobile-alt"></i><br>App<br>Integration </button>
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(6)' ><i class="fas fa-code"></i><br>App<br> Developer</button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(7)' ><i class="fas fa-power-off"></i><br>Service<br>Desk</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(8)' ><i class="fas fa-user-cog"></i><br>Desktop<br>Support</button>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+<!-- footer -->
+    <h6 class="text-center text-white-50 bg-secondary py-3 mb-0">&copy;2018 R1Studio; Simulation and Gaming Studio</h6>
+</body>
+</html>

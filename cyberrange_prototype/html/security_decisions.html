@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/security_decisions.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <title>Security</title>
+  </head>
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then chart.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/security_decisions.js"></script>
+
+    <!-- page Title -->
+    <h1 class="display-3 text-center text-primary shadow-sm p-3 mb-5 bg-light rounded">[ Security ]</h1>
+
+    <!-- page Body -->
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <!-- Decision -->
+            <div class="row col-md-10 pl-5 pb-5">
+                        <div class="owl-carousel" id="car">
+                        <div class="col-md-10 card text-center   ">
+                            <div class="card-img-top text-secodary text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-fire-alt fa-10x"></i>  </div>
+                                <div class="card-body">
+                                    <h5 class="display-4 text-muted"> <span id="peopleTitle1">Firewall - Host</span></h5>
+                                    <p class="card-text">
+                                        <h1 class="display-2 mb-0"id="employeeNumber1"></h1>
+                                        <br>
+                                        <span class="text-primary lead">Implementation Level: <span id="implementationLevel0"></span></span><br>
+                                        <span class="text-primary lead">Security Cost:  <span id="securityCost0"></span></span>
+                                    </p>
+                                    <div class="row p-2 mx-0">
+                                        <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(0);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                        <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(0);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                    </div>
+
+                                </div>
+                        </div>
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info text-center shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-fire-alt fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted" > <span id="peopleTitle2">Firewall - Network</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber2"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel1"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost1"></span> </span>
+                                        </p>
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(1);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(1);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-fire-alt fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Firewall - Client</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel2"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost2"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(2);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(2);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-times-circle fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle1">Antivirus - Host</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel3"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost3"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(3);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(3);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-times-circle fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Antivirus - Network</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel4"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost4"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(4);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(4);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-times-circle fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Antivirus - Client</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel5"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost5"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(5);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(5);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-network-wired fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Network Access Controls</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel6"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost6"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(6);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(6);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-filter fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Spam-Phishing Filters</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel7"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost7"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(7);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(7);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-mail-bulk fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Secure Email Gateway</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel8"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost8"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(8);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(8);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-user-secret fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Identity Management</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel9"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost9"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(9);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(9);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-mobile-alt fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Multifactor Authentication</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel10"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost10"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(10);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(10);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-mobile fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Mobile Device Management</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel11"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost11"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(11);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(11);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-clipboard-list fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Security Event Information Manager</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel12"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost12"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(12);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(12);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-broadcast-tower fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Scanning Instruments</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel13"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost13"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(13);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(13);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-book fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Log Collection System</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel14"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost14"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(14);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(14);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-book-dead fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Threat Intelligence Feeds</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel15"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost15"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(15);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(15);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-microscope fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Forensics Tools</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel16"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost16"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(16);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(16);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-laptop fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Asset Management System</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel17"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost17"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(17);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(17);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-database fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Data Loss Prevention System</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel18"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost18"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(18);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(18);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-eye fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Privacy Monitoring Technology</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel19"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost19"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(19);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(19);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-success shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-prescription fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Incident Management System</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel20"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost20"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(20);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(20);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-secondary shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-save fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">Data Backup and Recovery System</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel21"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost21"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(21);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(21);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+                        <div class="col-md-10 card text-center">
+                                <div class="card-img-top text-info shadow-sm p-3 mb-5 bg-white rounded"> <i class="fas fa-file-export fa-10x"></i> </div>
+                                    <div class="card-body">
+                                        <h5 class="display-4 text-muted"><span id="peopleTitle3">HA/Backup Files</span></h5>
+                                        <p class="card-text">
+                                            <h1 class="display-2 mb-0" id="employeeNumber3"></h1>
+                                            <br>
+                                            <span class="text-primary lead">Implementation Level: <span id="implementationLevel22"></span></span><br>
+                                            <span class="text-primary lead">Security Cost:  <span id="securityCost22"></span> </span>
+                                        </p>
+
+                                        <div class="row p-2 mx-0">
+                                          <div class="col-md-4"><a onclick="javascript:increaseImplementationLevel(22);" data-toggle="tooltip"  title="Add" class="btn btn-success " ><i class="fas fa-plus"></i></a></div>
+                                          <div class="col-md-4"><a onclick="javascript:decreaseImplementationLevel(22);" data-toggle="tooltip"  title="Reduce" class="btn btn-secondary "><i class="fas fa-minus"></i></a></div>
+
+                                        </div>
+                                    </div>
+
+                        </div>
+
+
+                        </div>
+                </div>
+                <div class="row col-md-2">
+                  <ul class="list-group">
+                    <li class="list-group-item" onclick="javascript:bringFocus(0);">Firewall - Host</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(1);">Firewall - Network</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(2);">Firewall - Client</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(3);">Antivirus - Host</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(4);">Antivirus - Network</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(5);">Antivirus - Client</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(6);">Network Access Controls</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(7);">Spam-Phishing Filters</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(8);">Secure Email Gateway</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(9);">Identity Management</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(10);">Multifactor Authentication</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(11);">Mobile Device Management</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(12);">Security Event Information Manager</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(13);">Scanning Instruments</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(14);">Log Collection System</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(15);">Threat Intelligence Feeds</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(16);">Forensics Tools</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(17);">Asset Management System</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(18);">Data Loss Prevention System</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(19);">Privacy Monitoring Technology</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(20);">Incident Management System</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(21);">Data Backup and Recovery System</li>
+                    <li class="list-group-item" onclick="javascript:bringFocus(22);">HA/Backup Files</li>
+                  </ul>
+                </div>
+
+                <!-- tiles-->
+
+                <!--<div class="row col-md-4  mx-0" id="tiles">
+
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(0)'><i class="fas fa-user-shield"></i><br>Security</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(1)'><i class="fas fa-upload"></i><br>Network <br>Engineer</button>
+
+                    <button type="button" class="btn btn-outline-secondary" onclick='javascript:SecurityShow(2)'><i class="fas fa-server"></i><br>Server <br>Admin </button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(3)'><i class="fas fa-desktop"></i><br>Desktop<br>Engineer</button>
+
+                    <button type="button" class="btn btn-outline-secondary "onclick='javascript:SecurityShow(4)'><i class="fas fa-database"></i><br>DBA</button>
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(5)'><i class="fas fa-mobile-alt"></i><br>App<br>Integration </button>
+
+                    <button type="button" class="btn btn-outline-success" onclick='javascript:SecurityShow(6)' ><i class="fas fa-code"></i><br>App<br> Developer</button>
+
+                    <button type="button" class="btn btn-outline-info" onclick='javascript:SecurityShow(7)' ><i class="fas fa-power-off"></i><br>Service<br>Desk</button>
+
+                    <button type="button" class="btn btn-outline-primary" onclick='javascript:SecurityShow(8)' ><i class="fas fa-user-cog"></i><br>Desktop<br>Support</button>
+
+
+                </div>-->
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <footer class="text-center text-white-50 bg-secondary py-3 mb-0">&copy;2018 R1Studio; Simulation and Gaming Studio</footer>
+</body>
+</html>
