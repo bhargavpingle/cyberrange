@@ -1,84 +1,3 @@
-
-var xhr = new XMLHttpRequest();
-var current, current_i;
-function addLoadEvent(func)
-{
-    var oldonload = window.onload;
-    if (typeof window.onload != 'function')
-    {
-        window.onload = func;
-    }
-    else
-    {
-        window.onload = function()
-        {
-            oldonload();
-            func();
-        }
-    }
-}
-addLoadEvent( function() {
-    var peopleTitle1 = document.getElementById(peopleTitle1);
-    var peopleTitle2 = document.getElementById(peopleTitle2);
-    var peopleTitle3 = document.getElementById(peopleTitle3);
-
-    var employeeNumber1 = document.getElementById(employeeNumber1);
-    var employeeNumber2 = document.getElementById(employeeNumber2);
-    var employeeNumber3 = document.getElementById(employeeNumber3);
-
-    var costPerEmployee1 = document.getElementById(costPerEmployee1);
-    var costPerEmployee2 = document.getElementById(costPerEmployee2);
-    var costPerEmployee3 = document.getElementById(costPerEmployee3);
-
-    var trainingPerEmployee1 = document.getElementById(trainingPerEmployee1);
-    var trainingPerEmployee2 = document.getElementById(trainingPerEmployee2);
-    var trainingPerEmployee3 = document.getElementById(trainingPerEmployee3);
-
-});
-addLoadEvent( function() {
-  xhr.open("GET", 'http://131.183.222.85:8080/people', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      var result = xhr.response;
-      data = JSON.parse(result);
-      console.log(data);
-      for(var i = 0; i < data.length; i++) {
-        if(data[i].peopleType.slice(0,-2) == "Security") {
-          var num = data[i].peopleType.slice(-1);
-          var level = "level"+num;
-          security[level] = {
-            title:"Security " + num,
-            employeeNumber: data[i].fte,
-            costPerEmployee: data[i].costFte,
-            trainingPerEmployee: data[i].trainingFte
-          }
-        }
-        else if(data[i].peopleType.slice(0,-2) == "NetworkEngineer") {
-          var num = data[i].peopleType.slice(-1);
-          var level = "level"+num;
-          netEngineer[level] = {
-            title:"Network Engineer " + num,
-            employeeNumber: data[i].fte,
-            costPerEmployee: data[i].costFte,
-            trainingPerEmployee: data[i].trainingFte
-          }
-        }
-        else if(data[i].peopleType.slice(0,-2) == "ServerAdmin") {
-          var num = data[i].peopleType.slice(-1);
-          var level = "level"+num;
-          ServerAdmin[level] = {
-            title:"Network Engineer " + num,
-            employeeNumber: data[i].fte,
-            costPerEmployee: data[i].costFte,
-            trainingPerEmployee: data[i].trainingFte
-          }
-        }
-      }
-    }
-  }
-  xhr.send();
-})
 var security = {}
 /*var security ={
     level1:{
@@ -270,8 +189,92 @@ var DesktopSupport ={
         trainingPerEmployee: "2,000"
     }
 };
-
 var peopleType = [security,netEngineer, ServerAdmin, DesktopEngineer, DBA, AppIntegration, AppDeveloper, ServiceDesk, DesktopSupport];
+var xhr = new XMLHttpRequest();
+var current, current_i;
+function addLoadEvent(func)
+{
+    var oldonload = window.onload;
+    if (typeof window.onload != 'function')
+    {
+        window.onload = func;
+    }
+    else
+    {
+        window.onload = function()
+        {
+            oldonload();
+            func();
+        }
+    }
+}
+addLoadEvent( function() {
+    var peopleTitle1 = document.getElementById(peopleTitle1);
+    var peopleTitle2 = document.getElementById(peopleTitle2);
+    var peopleTitle3 = document.getElementById(peopleTitle3);
+
+    var employeeNumber1 = document.getElementById(employeeNumber1);
+    var employeeNumber2 = document.getElementById(employeeNumber2);
+    var employeeNumber3 = document.getElementById(employeeNumber3);
+
+    var costPerEmployee1 = document.getElementById(costPerEmployee1);
+    var costPerEmployee2 = document.getElementById(costPerEmployee2);
+    var costPerEmployee3 = document.getElementById(costPerEmployee3);
+
+    var trainingPerEmployee1 = document.getElementById(trainingPerEmployee1);
+    var trainingPerEmployee2 = document.getElementById(trainingPerEmployee2);
+    var trainingPerEmployee3 = document.getElementById(trainingPerEmployee3);
+
+});
+addLoadEvent( function() {
+  xhr.open("GET", 'http://131.183.222.85:8080/people', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var result = xhr.response;
+      data = JSON.parse(result);
+      console.log(data);
+      for(var i = 0; i < data.length; i++) {
+        if(data[i].peopleType.slice(0,-2) == "Security") {
+          var num = data[i].peopleType.slice(-1);
+          var level = "level"+num;
+          security[level] = {
+            title:"Security " + num,
+            employeeNumber: data[i].fte,
+            costPerEmployee: data[i].costFte,
+            trainingPerEmployee: data[i].trainingFte
+          }
+        }
+        else if(data[i].peopleType.slice(0,-2) == "NetworkEngineer") {
+          var num = data[i].peopleType.slice(-1);
+          var level = "level"+num;
+          netEngineer[level] = {
+            title:"Network Engineer " + num,
+            employeeNumber: data[i].fte,
+            costPerEmployee: data[i].costFte,
+            trainingPerEmployee: data[i].trainingFte
+          }
+        }
+        else if(data[i].peopleType.slice(0,-2) == "ServerAdmin") {
+          var num = data[i].peopleType.slice(-1);
+          var level = "level"+num;
+          ServerAdmin[level] = {
+            title:"Network Engineer " + num,
+            employeeNumber: data[i].fte,
+            costPerEmployee: data[i].costFte,
+            trainingPerEmployee: data[i].trainingFte
+          }
+        }
+      }
+      SecurityShow(0);
+    }
+  }
+  xhr.send();
+
+})
+
+
+
 
 function increase(lvl) {
   var toShow = current
@@ -279,6 +282,7 @@ function increase(lvl) {
   SecurityShow(current_i);
 }
 function decrease(lvl) {
+  if(parseInt(current["level"+(lvl)]["employeeNumber"]) == 0) { return false; } 
   current["level"+(lvl)]["employeeNumber"] = parseInt(current["level"+(lvl)]["employeeNumber"])-1;
   SecurityShow(current_i);
 }
