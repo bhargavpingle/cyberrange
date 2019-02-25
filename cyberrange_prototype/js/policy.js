@@ -1,7 +1,8 @@
+var round = parseInt(sessionStorage.getItem("round"))
 window.onload = function(){
 var xhr = new XMLHttpRequest();
 var decisionlev = [];
-xhr.open("GET", 'http://131.183.222.85:8080/policies', true);
+xhr.open("POST", 'http://131.183.222.85:8080/policies', true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -15,7 +16,7 @@ xhr.onreadystatechange = function () {
         show();
       }
     } 
-xhr.send();
+xhr.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}));
 
 function show() {
     console.log(data.length);
