@@ -157,3 +157,4 @@ xhr.send(JSON.stringify({userID:1,gameID:1,roundNumber:round}));
             roundNumber:data[0].roundNumber};
         sample_load(sample_url, sample_data, sample_callback);
     }
+}
