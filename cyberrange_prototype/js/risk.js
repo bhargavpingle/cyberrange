@@ -1,7 +1,6 @@
 var year = new Date().getFullYear()
 if (sessionStorage.getItem("year") != null && sessionStorage.getItem("year") != 0) {year = parseInt(sessionStorage.getItem("year"));}
-var round = 1;
-if (sessionStorage.getItem("round") != null && sessionStorage.getItem("round") != 0) {round = parseInt(sessionStorage.getItem("round"));}
+
 function formatCurrency(funds) {
   //convert a decimal number to currency format, e.g, 13.4 --> $13.40
   var fund=String(funds.toFixed(2));
@@ -39,7 +38,7 @@ var xhr4 = new XMLHttpRequest();
 var xhr5 = new XMLHttpRequest();
 
 //Get the parameters
-xhr.open("GET", 'http://131.183.222.85:8080/score', true);
+xhr.open("POST", 'http://131.183.222.85:8080/score', true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
@@ -47,18 +46,18 @@ xhr.onreadystatechange = function () {
     var data = JSON.parse(result);
     console.log(data);
     for(var i = 0; i < data.length; i++){
-      if (data[i].scoreID == 5) {
-        riskTolerance_val = data[i].round_i;
+      if (data[i].scoreFactor == "Risk Tolerance") {
+        riskTolerance_val = data[i].score;
       }
     }
     ready += 1;
     if (ready == 6) { fillNums(); }
   }
 }
-xhr.send()
+xhr.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}))
 
 //Get asset investment cost
-xhr2.open("GET", 'http://131.183.222.85:8080/riskLevel', true);
+xhr2.open("POST", 'http://131.183.222.85:8080/riskLevel', true);
 xhr2.setRequestHeader('Content-Type', 'application/json');
 xhr2.onreadystatechange = function () {
   if (xhr2.readyState === 4) {
@@ -73,10 +72,10 @@ xhr2.onreadystatechange = function () {
     if (ready == 6) { fillNums(); }
   }
 }
-xhr2.send()
+xhr2.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}))
 
 //Get people investment cost
-xhr3.open("GET", 'http://131.183.222.85:8080/people', true);
+xhr3.open("POST", 'http://131.183.222.85:8080/people', true);
 xhr3.setRequestHeader('Content-Type', 'application/json');
 xhr3.onreadystatechange = function () {
   if (xhr3.readyState === 4) {
@@ -90,10 +89,10 @@ xhr3.onreadystatechange = function () {
     if (ready == 6) { fillNums(); }
   }
 }
-xhr3.send()
+xhr3.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}))
 
 //Get process cost factors
-xhr4.open("GET", 'http://131.183.222.85:8080/processes', true);
+xhr4.open("POST", 'http://131.183.222.85:8080/processes', true);
 xhr4.setRequestHeader('Content-Type', 'application/json');
 xhr4.onreadystatechange = function () {
   if (xhr4.readyState === 4) {
@@ -107,7 +106,7 @@ xhr4.onreadystatechange = function () {
     if (ready == 6) { fillNums(); }
   }
 }
-xhr4.send()
+xhr4.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}))
 
 //Get tolerance values information
 xhr5.open("GET", 'http://131.183.222.85:8080/toleranceValues', true);
@@ -138,10 +137,10 @@ xhr5.onreadystatechange = function () {
     if (ready == 6) { fillNums(); }
   }
 }
-xhr5.send()
+xhr5.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}))
 
 var xhr6 = new XMLHttpRequest()
-xhr6.open("GET", 'http://131.183.222.85:8080/security', true);
+xhr6.open("POST", 'http://131.183.222.85:8080/security', true);
 xhr6.setRequestHeader('Content-Type', 'application/json');
 xhr6.onreadystatechange = function () {
   if (xhr6.readyState === 4) {
@@ -155,7 +154,7 @@ xhr6.onreadystatechange = function () {
     if (ready == 6) { fillNums(); }
   }
 }
-xhr6.send();
+xhr6.send(JSON.stringify({userID:1, gameID:1, roundNumber:round}));
 var risk = {
   //This dictionary should be populated with variables from the database
   //changing these variables affects the charts
@@ -221,14 +220,14 @@ function fillNums(){
     var cashCost1=totalExpense1+capitalExpense1;
     cashCost.innerHTML = formatCurrency(cashCost1);
 
-    var cashBudget1=4000000;// fixed, from db
+    var cashBudget1=8000000;// fixed, from db
     cashBudget.innerHTML = formatCurrency(cashBudget1);
 
     var budgetVar1= cashBudget1-cashCost1;
     budgetVar.innerHTML = formatCurrency(budgetVar1);
 
     if (budgetVar1>0){
-        performIndex.innerHTML=100*budgetVar1.toFixed(2);
+        performIndex.innerHTML=(100*budgetVar1).toFixed(2);
     } else {
         performIndex.innerHTML=0;
     }

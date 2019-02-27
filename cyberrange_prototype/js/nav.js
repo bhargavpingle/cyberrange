@@ -1,7 +1,7 @@
 var year = new Date().getFullYear()
 if (sessionStorage.getItem("year") != null && sessionStorage.getItem("year") != 0) {year = parseInt(sessionStorage.getItem("year"));}
 var round = 1;
-if (sessionStorage.getItem("round") != null && sessionStorage.getItem("round") != 0) {round = parseInt(sessionStorage.getItem("round"));}
+if ((sessionStorage.getItem("round") != null) && (sessionStorage.getItem("round") != 0)) {round = parseInt(sessionStorage.getItem("round"));}
 function addLoadEvent(func)
 {
     var oldonload = window.onload;
@@ -18,19 +18,53 @@ function addLoadEvent(func)
         }
     }
 }
+function addUnloadEvent(func)
+{
+    var oldonbeforeunload = window.onbeforeunload;
+    if (typeof window.onbeforeunload != 'function')
+    {
+        window.onbeforeunload = func;
+    }
+    else
+    {
+        window.onbeforunload = function()
+        {
+            oldonbeforeunload();
+            func();
+        }
+    }
+}
+addUnloadEvent(function() {
+  sessionStorage.setItem("round", round);
+})
 function reset() {
   sessionStorage.clear();
   round = 1;
-  xhr = new XMLHttpRequest();
-  xhr.open("POST", 'http://131.183.222.85:8080/resetAssetsData', true);
+  var xhr = new XMLHttpRequest();
+  var xhr2 = new XMLHttpRequest();
+  var xhr3 = new XMLHttpRequest();
+  var xhr4 = new XMLHttpRequest();
+  var xhr5 = new XMLHttpRequest();
+  var xhr6 = new XMLHttpRequest();
+  xhr.open("POST", 'http://131.183.222.85:8080/resetAssetsData', false);
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState===4) {
-      location.reload(true);
-    }
-  }
-  xhr.send({userID:001, gameID:001, roundNumber:001})
-
+  xhr.send(JSON.stringify({userID:1, gameID:1, roundNumber:1}))
+  xhr2.open("POST", 'http://131.183.222.85:8080/resetPeopleData', false);
+  xhr2.setRequestHeader('Content-Type', 'application/json');
+  xhr2.send(JSON.stringify({userID:1, gameID:1, roundNumber: 1}))
+  xhr3.open("POST", 'http://131.183.222.85:8080/resetSecurityData', false);
+  xhr3.setRequestHeader('Content-Type', 'application/json');
+  xhr3.send(JSON.stringify({userID:1, gameID:1, roundNumber: 1}))
+  xhr4.open("POST", 'http://131.183.222.85:8080/resetProcessData', false);
+  xhr4.setRequestHeader('Content-Type', 'application/json');
+  xhr4.send(JSON.stringify({userID:1, gameID:1, roundNumber: 1}))
+  xhr5.open("POST", 'http://131.183.222.85:8080/resetPolicyData', false);
+  xhr5.setRequestHeader('Content-Type', 'application/json');
+  xhr5.send(JSON.stringify({userID:1, gameID:1, roundNumber: 1}))
+  xhr6.open("POST", 'http://131.183.222.85:8080/resetScoreData', false);
+  xhr6.setRequestHeader('Content-Type', 'application/json');
+  xhr6.send(JSON.stringify({userID:1, gameID:1, roundNumber: 1}))
+  location.reload(true);
 }
 function simulate() {
   sure = confirm("This will submit all changes and advance to the next round.  Are you sure you are ready to do this?");

@@ -4,7 +4,7 @@ var data;
 var xhr = new XMLHttpRequest();
 
 
-xhr.open("GET", 'http://131.183.222.85:8080/riskLevel', true);
+xhr.open("POST", 'http://131.183.222.85:8080/riskLevel', true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -337,7 +337,7 @@ xhr.onreadystatechange = function () {
 
     
 }
-xhr.send();
+xhr.send(JSON.stringify({userID:1,gameID:1,roundNumber:round}));
 
 
 

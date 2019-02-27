@@ -1,7 +1,9 @@
 window.onload = function(){
     var decisionlev = [];
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", 'http://131.183.222.85:8080/processes', true);
+
+
+    xhr.open("POST", 'http://131.183.222.85:8080/processes', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -15,7 +17,7 @@ window.onload = function(){
             show();
         } 
     }
-    xhr.send();
+xhr.send(JSON.stringify({userID:1,gameID:1,roundNumber:round}));
 
     function show() {
         console.log(data.length);
