@@ -1,4 +1,4 @@
-Chart.defaults.global.legend.display = false;
+
 
 var data;
 var xhr = new XMLHttpRequest();
@@ -11,7 +11,7 @@ xhr.onreadystatechange = function () {
         
         data = xhr.response;
         data = JSON.parse(data);
-        //console.log(data);
+        console.log(data);
 
 
 
@@ -25,12 +25,15 @@ xhr.onreadystatechange = function () {
           var systemSoftware=[];
           for (var i = 0; i < data.length; i++){
             if (data[i].assetType == "Computers"){
-              computer[i]={
+              if(computer.length==0)
+              var j=0;
+              computer[j]={
 
                 age: data[i].age,
                 num: data[i].num,
               }
-            //console.log(computer[i].age);
+              j++;
+            // console.log(computer[i].age);
             }
             else if (data[i].assetType == "Laptops"){
               if(laptop.length==0)
@@ -88,6 +91,15 @@ xhr.onreadystatechange = function () {
             //console.log(systemSoftware[i].age);
             }
           }
+
+          iot[0]={age:1,num:50};
+          iot[1]={age:3,num:10};
+          iot[2]={age:5,num:100};
+
+          systemSoftware[0]={age:2,num:450};
+          systemSoftware[1]={age:3,num:500};
+          systemSoftware[2]={age:10,num:250};
+          systemSoftware[3]={age:3,num:450};
     
           function computerChart(){
             var young=0;
@@ -347,25 +359,29 @@ $(document).ready(function() {
  
   owl.owlCarousel({
       items : 5, //10 items above 1000px browser width
-      itemsDesktop : [1000,4], //5 items between 1000px and 901px
-      itemsDesktopSmall : [900,3], // betweem 900px and 601px
-      itemsTablet: [600,2], //2 items between 600 and 0
-      itemsMobile : false // itemsMobile disabled - inherit from itemsTablet option
+      responsive : {
+        100: { items: 1    },
+        480 : { items : 2  }, 
+        768 : { items : 3  }, 
+        1024 : { items : 4 },
+        1400 : {items: 5},
+    },
   });
  
   // Custom Navigation Events
-  $(".next").click(function(){
-    owl.trigger('owl.next');
-  })
-  $(".prev").click(function(){
-    owl.trigger('owl.prev');
-  })
-  $(".play").click(function(){
-    owl.trigger('owl.play',1000); //owl.play event accept autoPlay speed as second parameter
-  })
-  $(".stop").click(function(){
-    owl.trigger('owl.stop');
-  })
+  // $(".next").click(function(){
+  //   owl.trigger('owl.next');
+  // })
+  // $(".prev").click(function(){
+  //   owl.trigger('owl.prev');
+  // })
+  // $(".play").click(function(){
+  //   owl.trigger('owl.play',1000); //owl.play event accept autoPlay speed as second parameter
+  // })
+  // $(".stop").click(function(){
+  //   owl.trigger('owl.stop');
+  // })
  
 });
+
 
